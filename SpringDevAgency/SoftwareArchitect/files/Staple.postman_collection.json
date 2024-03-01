@@ -1,0 +1,533 @@
+{
+	"info": {
+		"_postman_id": "d4c39417-0268-4521-a74c-e9f1c17a511a",
+		"name": "Staple",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18747752"
+	},
+	"item": [
+		{
+			"name": "Scan Asynchronous Multiple Documents",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "55685ed2ef0b900bb0dfdc85363e8605490178b1570ec22e8bc6060a48e0f342",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQ5MzAsImlkZW50aXR5IjoiNDkzMCIsImlhdCI6MTcwODkxMDY1NiwiZXhwIjoxNzA4OTUzODU2fQ.wB3X0sd_xdkcGE-0AGJrPLdbzadjB-ohuGZqHUr3ltU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "qid",
+							"value": "7790",
+							"type": "text"
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/wangz/Downloads/Print.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api-gateway.staple.io/v2/documents/scan/async-documents",
+					"protocol": "https",
+					"host": [
+						"api-gateway",
+						"staple",
+						"io"
+					],
+					"path": [
+						"v2",
+						"documents",
+						"scan",
+						"async-documents"
+					]
+				},
+				"description": "Scan a asynchronous document using the Invoice model in Staple to receive the document ID extracted. The Read operation executes asynchronously. The time for completion of the text extraction process depends on the volume of the text and the number of pages in the document. After the document finished scanning, you can get data extracted by document ID via [https://api-gateway.staple.io/v1/documents/{docId}](https://api-gateway.staple.io/v1/documents/{docId})\n\nThe documents would be left in the queue specified for any further manipulation.\n\nIf you are looking to scan a file for a custom model you have developed, simply create a queue using that model and use the queue ID with this endpoint. It will extract data based on your queue instead of the invoice model.\n\n##### REQUEST HEADERS\n\n| Attribute | Type | Option | Description |\n| --- | --- | --- | --- |\n| x-api-key | String | Required | An unique string |\n| Authorization | String | Required | The bearer token |\n\n##### REQUEST FORM DATA\n\n| Attribute | Type | Option | Description |\n| --- | --- | --- | --- |\n| qid | Int | Required | Unique id of INVOICE queue |\n| files | File | Required | Invoice |\n| handwritten | Array(Boolean) | Optional | Specify handwritten or not |\n\n##### RESPONSE BODY\n\n| Attribute | Type | Description |\n| --- | --- | --- |\n| asyncScanMultipleDocuments | Object | Contains all response information |\n| 1\\. documents | Array | See [data](https://documentation.staple.io/#5608533f-d77c-498b-8861-9483e9ed7a1b) |\n| 2\\. message | String | The document is being processed. Please wait for a second. |"
+			},
+			"response": [
+				{
+					"name": "Scan Asynchronous Multiple Documents",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "affd15b30cadab9ff95230dc51e8646fa4aade5dee23e79ca3aae9018f7bed01"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQwLCJpYXQiOjE1OTM3NTc3OTYsImV4cCI6MTU5Mzc5Mzc5Nn0.4ZrEDB-6wBSG5uStLMJUh297GYFBQgDm4SqgCEIgDZg"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": [
+										"/D:/invoices/invoice.pdf",
+										"/D:/invoices/invoice1.pdf"
+									]
+								},
+								{
+									"key": "qid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "handwritten",
+									"value": "[true]",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api-gateway.staple.io/v2/documents/scan/async-documents",
+							"protocol": "https",
+							"host": [
+								"api-gateway",
+								"staple",
+								"io"
+							],
+							"path": [
+								"v2",
+								"documents",
+								"scan",
+								"async-documents"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"asyncScanMultipleDocuments\": {\r\n        \"documents\": [\r\n            {\r\n                \"docId\": 1,\r\n                \"docName\": \"invoice.pdf\"\r\n            },\r\n            {\r\n                \"docId\": 2,\r\n                \"docName\": \"invoice2.pdf\"\r\n            }\r\n        ],\r\n        \"message\": \"The documents are being processed. Please wait a few minutes or so. Processing will depend on the number of documents and their size.\"\r\n    }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Upload Vendors",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "71f1cd07646b1657d937471802a9c020a7b4647453626a63c11739cb51955f1e",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQ5MzAsImlkZW50aXR5IjoiNDkzMCIsImlhdCI6MTcwOTExNDYzMywiZXhwIjoxNzA5MTU3ODMzfQ.5AeDwqicCTePgH-5-UM9Y4Vpb-qak88dIxYO5qEdYM8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/wangz/Downloads/VMD template.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api-gateway.staple.io/v2/vendors/upload/queue/7790",
+					"protocol": "https",
+					"host": [
+						"api-gateway",
+						"staple",
+						"io"
+					],
+					"path": [
+						"v2",
+						"vendors",
+						"upload",
+						"queue",
+						"7790"
+					]
+				},
+				"description": "Upload vendor csv file on each the specified queue.\n\n##### REQUEST HEADERS\n\n| Attribute | Type | Option | Description |\n| --- | --- | --- | --- |\n| x-api-key | String | Required | An unique string |\n| Authorization | String | Required | The bearer token |\n| Content-Type | application/json | Optional | The original resource |\n\n##### REQUEST PARAMETERS\n\n| Attribute | Type | Description |\n| --- | --- | --- |\n| queueId | Int | Unique queue id |\n\n##### REQUEST FORM-DATA\n\n```\n{\n   \"file\": File | required | Vendor csv file\n}\n\n ```\n\n##### RESPONSE BODY\n\n| Attribute | Type | Description |\n| --- | --- | --- |\n| uploadVendorMaster | Array | Contains all response information |\n| 1\\. account_name | String |  |\n| 2\\. account_number | String |  |\n| 3\\. address | String |  |\n| 4\\. bank | String |  |\n| 5\\. account_number | String |  |\n| 6\\. credit_terms | String |  |\n| 7\\. email | String |  |\n| 8\\. iso_country_code | String |  |\n| 9\\. label1 | String |  |\n| 10\\. label2 | String |  |\n| 11\\. label3 | String |  |\n| 12\\. label4 | String |  |\n| 13\\. label5 | String |  |\n| 14\\. ref_id | Int |  |\n| 15\\. telephone_number | String |  |\n| 16\\. vendor_code | String |  |\n| 17\\. vendor_default_currency | String |  |\n| 18\\. vendor_gst_number | String |  |\n| 19\\. vendor_name | String |  |\n| 20\\. vendor_name_language | String |  |"
+			},
+			"response": [
+				{
+					"name": "Upload Vendors",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "affd15b30cadab9ff95230dc51e8646fa4aade5dee23e79ca3aae9018f7bed01"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQwLCJpYXQiOjE1OTM3NTc3OTYsImV4cCI6MTU5Mzc5Mzc5Nn0.4ZrEDB-6wBSG5uStLMJUh297GYFBQgDm4SqgCEIgDZg"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/LENOVO/Desktop/current-vendor-master.csv"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-gateway.staple.io/v2/vendors/upload/queue/1",
+							"protocol": "https",
+							"host": [
+								"api-gateway",
+								"staple",
+								"io"
+							],
+							"path": [
+								"v2",
+								"vendors",
+								"upload",
+								"queue",
+								"1"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"data\": {\r\n        \"uploadVendorMaster\": [\r\n            {\r\n                \"account_name\": null,\r\n                \"account_number\": null,\r\n                \"address\": null,\r\n                \"bank\": null,\r\n                \"credit_terms\": null,\r\n                \"email\": null,\r\n                \"iso_country_code\": null,\r\n                \"label1\": null,\r\n                \"label2\": null,\r\n                \"label3\": null,\r\n                \"label4\": null,\r\n                \"label5\": null,\r\n                \"ref_id\": 2,\r\n                \"telephone_number\": null,\r\n                \"vendor_code\": null,\r\n                \"vendor_default_currency\": null,\r\n                \"vendor_gst_number\": null,\r\n                \"vendor_name\": \"Vendor Name\",\r\n                \"vendor_name_language\": null\r\n            }\r\n        ]\r\n    }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Upload sku csv data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "71f1cd07646b1657d937471802a9c020a7b4647453626a63c11739cb51955f1e",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQ5MzAsImlkZW50aXR5IjoiNDkzMCIsImlhdCI6MTcwOTExNDYzMywiZXhwIjoxNzA5MTU3ODMzfQ.5AeDwqicCTePgH-5-UM9Y4Vpb-qak88dIxYO5qEdYM8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/wangz/Downloads/Print.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api-gateway.staple.io/v2/items/sku/upload/queue/7791",
+					"protocol": "https",
+					"host": [
+						"api-gateway",
+						"staple",
+						"io"
+					],
+					"path": [
+						"v2",
+						"items",
+						"sku",
+						"upload",
+						"queue",
+						"7791"
+					]
+				},
+				"description": "Upload sku csv data on each the specified queue.\n\n##### REQUEST HEADERS\n\n| Attribute | Type | Option | Description |\n| --- | --- | --- | --- |\n| x-api-key | String | Required | An unique string |\n| Authorization | String | Required | The bearer token |\n| Content-Type | application/json | Optional | The original resource |\n\n##### REQUEST PARAMETERS\n\n| Attribute | Type | Description |\n| --- | --- | --- |\n| queueId | Int | Unique queue id |\n\n##### REQUEST FORM-DATA\n\n``` json\n{\n   \"file\": File | required | sku csv file\n}\n\n ```\n\n##### RESPONSE BODY\n\n| Attribute | Type | Description |\n| --- | --- | --- |\n| uploadSkuCsv | Object | Contains all response information |\n| 1\\. message | String | Message after uploading sku csv file |"
+			},
+			"response": [
+				{
+					"name": "Upload sku csv data",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "affd15b30cadab9ff95230dc51e8646fa4aade5dee23e79ca3aae9018f7bed01"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQwLCJpYXQiOjE1OTM3NTc3OTYsImV4cCI6MTU5Mzc5Mzc5Nn0.4ZrEDB-6wBSG5uStLMJUh297GYFBQgDm4SqgCEIgDZg"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/LENOVO/Desktop/sku.csv"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-gateway.staple.io/v2/items/sku/upload/queue/1",
+							"protocol": "https",
+							"host": [
+								"api-gateway",
+								"staple",
+								"io"
+							],
+							"path": [
+								"v2",
+								"items",
+								"sku",
+								"upload",
+								"queue",
+								"1"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"uploadSkuCsv\": {\r\n        \"message\": \"Sku csv file has been uploaded successfully.\"\r\n    }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"credential\": {\r\n        \"email\": \"princepride.wang@yonyou.com.sg\",\r\n        \"password\": \"#Wzp971117\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-gateway.staple.io/v1/users/login",
+					"protocol": "https",
+					"host": [
+						"api-gateway",
+						"staple",
+						"io"
+					],
+					"path": [
+						"v1",
+						"users",
+						"login"
+					]
+				},
+				"description": "Login to the user account with your email and password\n\n##### REQUEST HEADERS\n\n| Attribute | Type | Option | Description |\n| --- | --- | --- | --- |\n| Content-Type | application/json | Optional | The original resource |\n\n##### REQUEST PAYLOAD\n\n``` json\n{\n    \"credential\": {\n        \"email\": String | required,\n        \"password\": String | required\n    }\n}\n\n```\n\n##### RESPONSE BODY\n\n| Attribute | Type | Description |\n| --- | --- | --- |\n| login | Object | Contains all response information |\n| 1\\. accessToken | String | Accesstoken is valid for 7 days |\n| 2\\. refreshToken | String | RefreshToken is valid for 10 days |\n| 3\\. apiKey | String | Apikey is valid to access api |"
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"credential\": {\n        \"email\": \"societegenerale@staple.io\",\n        \"password\": \"StapleAmlet2020!\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-gateway.staple.io/v1/users/login",
+							"protocol": "https",
+							"host": [
+								"api-gateway",
+								"staple",
+								"io"
+							],
+							"path": [
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"login\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQwLCJpZGVudGl0eSI6IjQwIiwiaWF0IjoxNTkzNzU5MzMxLCJleHAiOjE1OTM3OTUzMzF9.gHpPQJFY0bXi1lzptj5EBbU-yQSh3LqRgfBfLlgw22E\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQwLCJpYXQiOjE1OTM3NTkzMzEsImV4cCI6MTU5NDM2NDEzMX0.olNf1YsUuupLLEuE1rfbGCvvj2NquzgUbX0aTnHB07A\",\n        \"apiKey\": \"affd15b30cadab9ff95230dc51e8646fa4aade5dee23e79ca3aae9018f7bed01\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Generate PDF Document",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "71f1cd07646b1657d937471802a9c020a7b4647453626a63c11739cb51955f1e",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQ5MzAsImlkZW50aXR5IjoiNDkzMCIsImlhdCI6MTcwOTE3MDE5NCwiZXhwIjoxNzA5MjEzMzk0fQ.SdAV8IPWqEY2SN4uQl8G26e8srYhjR8G84fButZ812w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"name\": \"PO-01-85635\", \"qid\": 7792, \"data\": { \"CustomerEntityName\": [\"One Paradise (CK)\"], \"PONumber\": [\"PO-01-85635\"], \"InvoiceDate\": [\"2023-01-16\"], \"VendorCode\": [\"V00012\"], \"CompanyName\": [\"Angliss Singapore Pte Ltd\"], \"VendorGSTNumber\": [\"\"], \"Currency\": [\"SGD\"], \"Subtotal\": [\"12.70\"], \"TaxTotal\": [\"1.02\"], \"Discount\": [\"0\"], \"POTotal\": [\"13.72\"], \"OutletCode\": [\"\"], \"tables\": [ { \"headers\": [\"ItemNumber\",\"ItemCode\",\"Description\",\"Other\",\"UnitOfMeasurement\",\"Quantity\",\"UnitAmount\",\"DiscountRate\",\"DiscountAmount\",\"LineAmount\"], \"standardheader\":[\"ItemNumber\",\"ItemCode\",\"Description\",\"Other\",\"UnitOfMeasurement\",\"Quantity\",\"UnitAmount\",\"DiscountRate\",\"DiscountAmount\",\"LineAmount\"], \"rows\": [ [\"10000\",\"1220081\",\"BEEF OMASUM\",\"PROD-CK1\",\"KG\",\"1\",\"9.50031\",\"0\",\"0.00\",\"10.26\"],[\"20000\",\"1250038\",\"BEEF BONE CUT BULK\",\"PROD-CK1\",\"KG\",\"1\",\"3.20\",\"0\",\"0.00\",\"3.46\"] ], \"table_name\": \"The first table\", \"table_type\": \"default\" } ] }}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-gateway.staple.io/v2/supernova/models/document/create/7792",
+					"protocol": "https",
+					"host": [
+						"api-gateway",
+						"staple",
+						"io"
+					],
+					"path": [
+						"v2",
+						"supernova",
+						"models",
+						"document",
+						"create",
+						"7792"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Generated PDF Document",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "71f1cd07646b1657d937471802a9c020a7b4647453626a63c11739cb51955f1e",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQ5MzAsImlkZW50aXR5IjoiNDkzMCIsImlhdCI6MTcwOTE3MDE5NCwiZXhwIjoxNzA5MjEzMzk0fQ.SdAV8IPWqEY2SN4uQl8G26e8srYhjR8G84fButZ812w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api-gateway.staple.io/v2/supernova/models/document/fa5af59b-1491-425e-85ad-6737d3c9fb93",
+					"protocol": "https",
+					"host": [
+						"api-gateway",
+						"staple",
+						"io"
+					],
+					"path": [
+						"v2",
+						"supernova",
+						"models",
+						"document",
+						"fa5af59b-1491-425e-85ad-6737d3c9fb93"
+					]
+				},
+				"description": "Get PDF document has been generated.\n\n##### REQUEST HEADERS\n\n| Attribute | Type | Option | Description |\n| --- | --- | --- | --- |\n| x-api-key | String | Required | An unique string |\n| Authorization | String | Required | The bearer token |\n| Content-Type | application/json | Optional | The original resource |\n\n##### REQUEST PARAMETERS\n\n| Attribute | Type | Option | Description |\n| --- | --- | --- | --- |\n| requestId | uuid | required | Id of the document creation process |\n\n##### RESPONSE BODY\n\n| Attribute | Type | Description |\n| --- | --- | --- |\n| documentCreationRequest | Object | Contains all response information |\n| 1\\. id | uuid | Id of the document creation process |\n| 2\\. uid | Int | User id |\n| 3\\. qid | Int | Queue id |\n| 4\\. modelName | String | Model name |\n| 5\\. documentName | String | Document name |\n| 6\\. status | String | Failed or success |\n| 7\\. documentId | Int | Document id |\n| 8\\. requestStatusCode | Int | Status code |\n| 9\\. requestErrorMessage | String | Error message |\n| 10\\. scanningErrorMessage | String | Scanning error |\n| 11\\. data | Object | Data for PDF generation |"
+			},
+			"response": [
+				{
+					"name": "Get Generated PDF Document",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "affd15b30cadab9ff95230dc51e8646fa4aade5dee23e79ca3aae9018f7bed01"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQwLCJpYXQiOjE1OTM3NTc3OTYsImV4cCI6MTU5Mzc5Mzc5Nn0.4ZrEDB-6wBSG5uStLMJUh297GYFBQgDm4SqgCEIgDZg"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api-gateway.staple.io/v2/supernova/models/document/5a359a65-f380-4822-8936-81e86005c669",
+							"protocol": "https",
+							"host": [
+								"api-gateway",
+								"staple",
+								"io"
+							],
+							"path": [
+								"v2",
+								"supernova",
+								"models",
+								"document",
+								"5a359a65-f380-4822-8936-81e86005c669"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"documentCreationRequest\": {\r\n        \"id\": \"18e193bf-f890-4d99-b111-05b816647c71\",\r\n        \"createdAt\": 1685693539620,\r\n        \"uid\": 1,\r\n        \"qid\": 1,\r\n        \"modelName\": \"invoice\",\r\n        \"documentName\": \"01\",\r\n        \"data\": {\r\n            \"json_data\": {\r\n                \"InvoiceNumber\": \"12345678\"\r\n            },\r\n            \"model_name\": \"invoice\",\r\n            \"document_name\": \"newPDF\"\r\n        },\r\n        \"status\": \"success\",\r\n        \"documentId\": 1,\r\n        \"requestStatusCode\": 200,\r\n        \"requestErrorMessage\": null,\r\n        \"scanningErrorMessage\": null\r\n    }\r\n}"
+				}
+			]
+		}
+	]
+}
